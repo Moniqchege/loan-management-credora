@@ -1,11 +1,19 @@
-.dashboard-container {
-  padding: 20px;
-}
+.dashboard {
+  text-align: center;
 
-.chart-wrapper {
-  margin-bottom: 40px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  .chart-container {
+    margin: 20px;
+    width: 100%;
+    max-width: 600px;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
 }

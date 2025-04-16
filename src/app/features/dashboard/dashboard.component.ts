@@ -1,23 +1,66 @@
 import { Component } from '@angular/core';
-// import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartType } from 'chart.js';
+import { ChartComponent } from '../../shared/components/chart/chart.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  // imports: [NgChartsModule],
+  imports: [ChartComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
+  loanAmountsData = {
+    labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December'],
     datasets: [
-      { data: [120, 150, 180, 90, 100], label: 'Loan Applications' },
-    ],
+      {
+        label: 'Loan Amounts',
+        data: [10000, 50000, 20000, 5000, 100000, 35000, 100000, 80000, 65000, 75000, 100000],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
   };
 
-  pieChartLabels = ['Paid', 'Unpaid', 'Overdue'];
-  pieChartData = [300, 500, 200];
-  pieChartType: ChartType = 'pie';
+  loanAmountsOptions = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  };
+
+  repaymentProgressData = {
+    labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December'],
+    datasets: [
+      {
+        label: 'Loan Balance',
+        data: [5000, 40000, 2000, 500, 90000, 15000, 50000, 70000, 55000, 35000, 98000],
+        fill: false,
+        borderColor: 'rgba(75, 192, 192)',
+        tension: 0.1
+      }
+    ]
+  }
+
+  repaymentProgressOptions = {
+    responsive: true
+  }
+
+  loanStatusData = {
+    labels: ['Aprroved', 'Pending', 'Rejected'],
+    datasets: [
+      {
+        data: [10, 5, 3],
+        backgroundColor: ['#FF0000', '#FFFF00', '#008000'],
+        hoverBackgroundColor: ['#FF6666', '#FFFF66', '#66FF66']
+      }
+    ]
+  }
+
+  loanStatusOptions = {
+    responsive: true
+  }
 }

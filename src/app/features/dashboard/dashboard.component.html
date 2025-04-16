@@ -1,1 +1,30 @@
-<h1>Dashboard</h1>
+<div class="dashboard">
+  <h2>Loan Management Dshboard</h2>
+  <div class="chart-container">
+    <h3>Loan Amounts by Month</h3>
+    <app-chart
+      [chartType]="'bar'"
+      [chartData]="loanAmountsData"
+      [chartOptions]="loanAmountsOptions"
+    >
+    </app-chart>
+  </div>
+  <div class="chart-container">
+    <h3>Loan Repayment Progress</h3>
+    <app-chart
+      [chartType]="'line'"
+      [chartData]="repaymentProgressData"
+      [chartOptions]="repaymentProgressOptions"
+    >
+    </app-chart>
+  </div>
+  <div class="chart-container">
+    <h3>Loan Status Distribution</h3>
+    <app-chart
+      [chartType]="'pie'"
+      [chartData]="loanStatusData"
+      [chartOptions]="loanStatusOptions"
+    >
+    </app-chart>
+  </div>
+</div>

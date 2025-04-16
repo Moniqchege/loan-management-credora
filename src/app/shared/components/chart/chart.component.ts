@@ -1,38 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, Input, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import Chart, { ChartType, ChartOptions } from 'chart.js/auto';
 
 @Component({
   selector: 'app-chart',
-  templateUrl: './chart.component.html',
+  template: `<canvas #chartCanvas></canvas>`,
   styleUrls: ['./chart.component.css']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements AfterViewInit {
+  @ViewChild('chartCanvas') chartCanvas!: ElementRef;
+  @Input() chartType: ChartType = 'bar'; 
+  @Input() chartData: any;
+  @Input() chartOptions: any;
+
   chart: any;
 
-  ngOnInit(): void {
-    this.createChart();
+  ngAfterViewInit(): void {
+    this.chart = new Chart(this.chartCanvas.nativeElement, {
+      type: this.chartType,
+      data: this.chartData,
+      options: this.chartOptions
+    });
   }
 
-  createChart() {
-    this.chart = new Chart('chartCanvas', {
-      type: 'bar', 
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label: 'Loan Amounts',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+  ngOnChange():void{
+    if (this.chart) {
+      this.chart.destroy();
+      this.ngAfterViewInit();
+    }
   }
 }

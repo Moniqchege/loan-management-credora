@@ -90,7 +90,7 @@
           <td>{{ loan.termMonths }}</td>
           <td>{{ loan.startDate }}</td>
           <td [ngClass]="loan.status.toLowerCase()">{{ loan.status }}</td>
-          <td class="action-buttons">
+          <td class="button-group">
             <button (click)="deleteLoan(loan.id)">Delete</button>
             <button (click)="toggleSchedule(loan.id)">
               {{ selectedLoanId === loan.id ? "Hide" : "View" }} Schedule
