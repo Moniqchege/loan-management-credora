@@ -1,0 +1,129 @@
+<section class="h-100 gradient-form" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6 signup-card">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h4 class="mt-1 mb-5 pb-1">Credora</h4>
+                </div>
+
+                <form>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      [(ngModel)]="signupObj.firstName"
+                      class="form-control"
+                      placeholder="First Name"
+                    />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      [(ngModel)]="signupObj.lastName"
+                      class="form-control"
+                      placeholder="Last Name"
+                    />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="EmailId"
+                      name="EmailId"
+                      [(ngModel)]="signupObj.EmailId"
+                      class="form-control"
+                      placeholder="Enter Email "
+                    />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <div class="position-relative mb-3">
+                      <input
+                        [type]="showPassword ? 'text' : 'password'"
+                        class="form-control"
+                        placeholder="Password"
+                        [(ngModel)]="signupObj.password"
+                        name="password"
+                      />
+                      <i
+                        class="fa toggle-eye"
+                        [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                        (click)="togglePassword()"
+                      ></i>
+                    </div>
+
+                    <div class="position-relative">
+                      <input
+                        [type]="showConfirmPassword ? 'text' : 'password'"
+                        class="form-control"
+                        placeholder="Confirm Password"
+                        [(ngModel)]="signupObj.confirmPassword"
+                        name="confirmPassword"
+                      />
+                      <i
+                        class="fa toggle-eye"
+                        [ngClass]="
+                          showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'
+                        "
+                        (click)="toggleConfirmPassword()"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1 stacked-buttons">
+                    <button
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn login-button"
+                      type="button"
+                      (click)="onSignup()"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+
+                  <div
+                    class="d-flex align-items-center justify-content-center pb-4"
+                  >
+                    <p class="mb-0 me-2">Already have an account?</p>
+                    <button
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-outline-danger"
+                      (click)="goToSignin()"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">
+                  At Credora, We're More Than Just a Loan App
+                </h4>
+                <p>
+                  Credora Loan Management App empowers you to manage loans
+                  efficiently, track repayments seamlessly, and stay informed
+                  with real-time updates. We're your trusted partner in
+                  financial organization, helping you stay on top of every
+                  client and every transaction.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

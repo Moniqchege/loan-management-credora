@@ -1,0 +1,131 @@
+<div class="loan-container">
+  <h2>Loan Management</h2>
+
+  <form (ngSubmit)="addLoan()" class="loan-form">
+    <div>
+      <label for="customerName">Customer Name</label>
+      <input
+        id="customerName"
+        type="text"
+        [(ngModel)]="newLoan.customerName"
+        name="customerName"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="loanAmount">Loan Amount</label>
+      <input
+        id="loanAmount"
+        type="number"
+        [(ngModel)]="newLoan.loanAmount"
+        name="loanAmount"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="interestRate">Interest Rate (%)</label>
+      <input
+        id="interestRate"
+        type="number"
+        [(ngModel)]="newLoan.interestRate"
+        name="interestRate"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="termMonths">Term (Months)</label>
+      <input
+        id="termMonths"
+        type="number"
+        [(ngModel)]="newLoan.termMonths"
+        name="termMonths"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="startDate">Start Date</label>
+      <input
+        id="startDate"
+        type="date"
+        [(ngModel)]="newLoan.startDate"
+        name="startDate"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="newLoan.status" name="status">
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+    </div>
+
+    <button type="submit">Add Loan</button>
+  </form>
+
+  <table class="loan-table">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Amount</th>
+        <th>Interest Rate</th>
+        <th>Term (Months)</th>
+        <th>Start Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let loan of loans">
+        <tr>
+          <td>{{ loan.customerName }}</td>
+          <td>{{ loan.loanAmount | currency }}</td>
+          <td>{{ loan.interestRate }}%</td>
+          <td>{{ loan.termMonths }}</td>
+          <td>{{ loan.startDate }}</td>
+          <td [ngClass]="loan.status.toLowerCase()">{{ loan.status }}</td>
+          <td class="action-buttons">
+            <button (click)="deleteLoan(loan.id)">Delete</button>
+            <button (click)="toggleSchedule(loan.id)">
+              {{ selectedLoanId === loan.id ? "Hide" : "View" }} Schedule
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="selectedLoanId === loan.id">
+          <td colspan="7">
+            <div class="repayment-schedule">
+              <h4>Repayment Schedule</h4>
+              <table class="schedule-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Remaining Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let entry of getRepaymentSchedule(loan.id)">
+                    <td>{{ entry.month }}</td>
+                    <td>{{ entry.principal | currency }}</td>
+                    <td>{{ entry.interest | currency }}</td>
+                    <td>
+                      {{ entry.balance ? (entry.balance | currency) : "-" }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

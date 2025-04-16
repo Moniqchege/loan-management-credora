@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Customer Management</h2>
+  <form (ngSubmit)="saveCustomer()">
+    <input type="text" placeholder="Name" [(ngModel)]="customer.name" name="name" required />
+    <input type="email" placeholder="Email" [(ngModel)]="customer.email" name="email" required />
+    <input type="text" placeholder="Phone" [(ngModel)]="customer.phone" name="phone" required />
+    <button type="submit">{{ isEditing ? 'Update' : 'Add' }} Customer</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of customers">
+        <td>{{ c.name }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.phone }}</td>
+        <td>
+          <button (click)="editCustomer(c)">Edit</button>
+          <button (click)="deleteCustomer(c.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

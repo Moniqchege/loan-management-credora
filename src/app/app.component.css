@@ -1,0 +1,28 @@
+.app-layout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  app-navbar {
+    width: 250px; 
+    flex-shrink: 0;
+    background-color: #343a40;
+    color: white;
+    height: 100%;
+  }
+  
+  .app-content {
+    margin-left: 250px; 
+    padding: 20px;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 767px) {
+    .app-content {
+      margin-left: 0;
+    }
+  }
+  
+  

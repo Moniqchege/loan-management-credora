@@ -1,0 +1,16 @@
+<div class="auth-container">
+    <h2>{{ mode === 'login' ? 'Login' : 'Register' }}</h2>
+    
+    <div *ngIf="mode === 'login'">
+      <app-login></app-login>
+    </div>
+    
+    <div *ngIf="mode === 'register'">
+      <app-register></app-register>
+    </div>
+  
+    <button (click)="toggleMode()">
+      {{ mode === 'login' ? 'Create an Account' : 'Already have an account?' }}
+    </button>
+  </div>
+  
