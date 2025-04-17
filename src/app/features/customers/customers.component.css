@@ -85,3 +85,9 @@ td button:last-child {
 td button:hover {
   opacity: 0.85;
 }
+
+.highlight {
+  background-color: #f2f2f2; 
+  cursor: pointer;
+}
+

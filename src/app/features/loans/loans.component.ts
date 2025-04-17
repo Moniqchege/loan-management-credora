@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoanService } from '../../core/services/loan.service';
 import { Repayment } from '../../core/models/repayment.model';
+import { SearchService } from '../../core/services/search.service';
 
 @Component({
   selector: 'app-loans',
@@ -17,7 +18,7 @@ export class LoansComponent implements OnInit {
   selectedLoanId: number | null = null;
   repaymentSchedule: Repayment[] = [];
 
-  constructor(private loanService: LoanService) {}
+  constructor(private loanService: LoanService, private searchService: SearchService) {}
 
   newLoan: Loan = {
     id: 0,
@@ -80,5 +81,7 @@ export class LoansComponent implements OnInit {
       }
     }
   }
+
+  
   
 }

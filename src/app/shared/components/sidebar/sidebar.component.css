@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh; 
+  height: 100vh;
   width: 250px;
   background-color: #1f2937;
   color: #fff;
@@ -14,58 +14,60 @@
   flex-direction: column;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
 
-  &.open {
+.sidebar.open {
+  transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+  .sidebar {
     transform: translateX(0);
   }
+}
 
-  @media (min-width: 768px) {
-    transform: translateX(0);
-  }
+.sidebar .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
-  .sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+.sidebar .sidebar-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+.sidebar .sidebar-header .close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
-    .close-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-  }
+.sidebar .sidebar-menu {
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+  cursor: pointer;
+}
 
-  .sidebar-menu {
-    list-style: none;
-    padding: 0;
-    flex-grow: 1; 
-    cursor: pointer;
+.sidebar .sidebar-menu li {
+  margin: 0.5rem 0;
+}
 
-    li {
-      margin: 0.5rem 0;
+.sidebar .sidebar-menu li a {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+}
 
-      a {
-        display: block;
-        padding: 0.5rem;
-        border-radius: 4px;
-        color: #fff;
-        text-decoration: none;
-
-        &:hover,
-        &.active {
-          background-color: #374151;
-        }
-      }
-    }
-  }
+.sidebar .sidebar-menu li a:hover,
+.sidebar .sidebar-menu li a.active {
+  background-color: #374151;
 }
 
 .open-btn {
@@ -75,14 +77,14 @@
   background-color: #1f2937;
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.75rem;
   font-size: 1rem;
   border-radius: 4px;
   z-index: 1002;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .open-btn {
     display: none;
   }
 }
-
-

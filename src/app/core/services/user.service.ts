@@ -47,6 +47,6 @@ export class UserService {
 
   getUserByEmailAndPassword(email: string, password: string, username: string): User | undefined {
     const users = this.getUsers();
-    return users.find(user => user.email === email && user.password === password && user.username);
+    return users.find(user => user.email === email && user.password === password && user.username === username);
   }
 }

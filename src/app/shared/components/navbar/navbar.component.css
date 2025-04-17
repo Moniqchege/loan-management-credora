@@ -1,8 +1,9 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 250px; 
+  width: calc(100% - 250px); 
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +12,7 @@
   color: #111827;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 12px 0; 
 }
 
 .navbar-left {
@@ -23,6 +24,7 @@
   position: relative;
   width: 100%;
   max-width: 250px;
+  margin-left: 50px;
 }
 
 .search-container input {
@@ -49,6 +51,7 @@
 .navbar-links {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .navbar-links button {
@@ -66,15 +69,17 @@
   background-color: #d32f2f;
 }
 
+.highlight {
+  background-color: lightgray;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row;
-    justify-content: space-between;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 12px 12px; 
     padding: 10px 16px;
-  }
-
-  .search-container {
-    max-width: 180px;
-    margin: 0;
   }
 }

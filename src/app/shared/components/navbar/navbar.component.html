@@ -1,13 +1,13 @@
 <div class="navbar">
     <div class="navbar-left">
-      <div class="search-container">
+      <div class="search-container" *ngIf="showSearchBar">
+        <i class="fas fa-search"></i>
         <input
           type="text"
           placeholder="Search"
           [(ngModel)]="searchQuery"
           (keyup.enter)="onSearch()"
         />
-        <i class="fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
     <div class="navbar-links">
