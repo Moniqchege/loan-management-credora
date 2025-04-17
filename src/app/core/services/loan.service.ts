@@ -19,10 +19,33 @@ export class LoanService {
 
   calculateRepaymentSchedule(loan: Loan): Repayment[] {
     const repayments: Repayment[] = [];
+  
+    if (
+      loan.loanAmount == null ||
+      loan.termMonths == null ||
+      loan.interestRate == null ||
+      loan.loanAmount <= 0 ||
+      loan.termMonths <= 0 ||
+      isNaN(loan.loanAmount) ||
+      isNaN(loan.interestRate) ||
+      isNaN(loan.termMonths)
+    ) {
+      console.error('Invalid loan data', loan);
+      return [];
+    }
+    
+  
     let remainingAmount = loan.loanAmount;
     const monthlyInterestRate = loan.interestRate / 100 / 12;
-    const monthlyPayment = remainingAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loan.termMonths)) / 
-                           (Math.pow(1 + monthlyInterestRate, loan.termMonths) - 1);
+  
+    let monthlyPayment: number;
+  
+    if (monthlyInterestRate === 0) {
+      monthlyPayment = loan.loanAmount / loan.termMonths;
+    } else {
+      monthlyPayment = remainingAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loan.termMonths)) /
+                       (Math.pow(1 + monthlyInterestRate, loan.termMonths) - 1);
+    }
   
     for (let i = 1; i <= loan.termMonths; i++) {
       const interest = remainingAmount * monthlyInterestRate;
@@ -35,12 +58,12 @@ export class LoanService {
         interest: parseFloat(interest.toFixed(2)), 
         totalPayment: parseFloat(monthlyPayment.toFixed(2)),
         balance: parseFloat(Math.max(remainingAmount, 0).toFixed(2)) 
- 
       });
     }
   
     return repayments;
   }
+  
   
 
   getRepaymentSchedule(loanId: number): Repayment[] {

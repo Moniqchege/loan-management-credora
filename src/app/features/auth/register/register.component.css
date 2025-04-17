@@ -1,42 +1,56 @@
+.container,
+.row,
+.col-xl-10 {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .gradient-custom-2 {
-  background: #fccb90;
-  
-  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-  
+  flex: 1;
   background: linear-gradient(to right, #6a11cb, #2575fc);
-  }
-  
-  @media (min-width: 768px) {
-  .gradient-form {
-  height: 100vh !important;
-  }
-  }
-  @media (min-width: 769px) {
-  .gradient-custom-2 {
-  border-top-right-radius: .3rem;
-  border-bottom-right-radius: .3rem;
-  }
-  }
+  color: white;
+  padding: 2rem 3rem;
+}
 
-  .signup-card {
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
+.gradient-form {
+  min-height: 100vh;
+  padding-top: 80px;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
 
-  .card-body{
-    padding: 2rem 3rem;
-  }
+.card {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  .stacked-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.card-body {
+  padding: 2rem 3rem;
+  background-color: #fff;
+}
 
-  .login-button {
-    width: 100%;
+.signup-card {
+  flex: 1;
+  padding: 2rem;
+}
+
+.stacked-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-button {
+  width: 100%;
   max-width: 300px;
   background: linear-gradient(to right, #6a11cb, #2575fc);
   color: white;
@@ -47,33 +61,35 @@
   border-radius: 8px;
   transition: background 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .login-button:hover {
-    background: linear-gradient(to right, #5b0eaa, #1e60e2);
-    transform: scale(1.02);
-  }
-  
-  .stacked-buttons button {
-    width: 100%;
-    max-width: 250px;
-  }
-  
-  .forgot-password {
-    margin-top: 8px;
-    font-size: 14px;
-  }
+.login-button:hover {
+  background: linear-gradient(to right, #5b0eaa, #1e60e2);
+  transform: scale(1.02);
+}
 
-  .toggle-eye {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #666;
-  }
+.stacked-buttons button {
+  width: 100%;
+  max-width: 250px;
+}
 
-  .card {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+.forgot-password {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+@media (min-width: 768px) {
+  .gradient-custom-2 {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
-  
+}

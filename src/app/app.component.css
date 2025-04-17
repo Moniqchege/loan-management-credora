@@ -1,6 +1,8 @@
 .app-layout {
     display: flex;
     height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
   }
   
   app-navbar {
@@ -17,6 +19,7 @@
     background-color: #f4f6f8;
     min-height: 100vh;
     box-sizing: border-box;
+    border-radius: 12px;
   }
   
   @media (max-width: 767px) {

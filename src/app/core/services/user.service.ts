@@ -5,16 +5,37 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = [
-    { id: 1, email: 'admin@gmail.com', password: 'admin123', role: 'admin' },
-    { id: 2, email: 'user1@gmail.com', password: 'user123', role: 'user' }
-  ];
+  private localStorageKey = 'users';
+
+  constructor() {
+    this.initializeUsersInLocalStorage();
+  }
+
+  private initializeUsersInLocalStorage(): void {
+    const users = localStorage.getItem(this.localStorageKey);
+    if (!users) {
+      localStorage.setItem(this.localStorageKey, JSON.stringify([]));
+    }
+  }
 
   getUsers(): User[] {
-    return this.users;
+    const users = localStorage.getItem(this.localStorageKey);
+    return users ? JSON.parse(users) : [];
   }
 
   getUserById(id: number): User | undefined {
-    return this.users.find(user => user.id === id);
+    const users = this.getUsers();
+    return users.find(user => user.id === id);
+  }
+
+  addUser(newUser: User): void {
+    const users = this.getUsers();
+    newUser.id = this.generateNextUserId(users);
+    users.push(newUser);
+    localStorage.setItem(this.localStorageKey, JSON.stringify(users));
+  }
+
+  private generateNextUserId(users: User[]): number {
+    return users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
   }
 }

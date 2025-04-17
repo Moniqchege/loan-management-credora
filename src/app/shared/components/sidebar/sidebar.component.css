@@ -9,9 +9,11 @@
   padding: 1rem;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 1000;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 
   &.open {
     transform: translateX(0);
@@ -19,8 +21,6 @@
 
   @media (min-width: 768px) {
     transform: translateX(0);
-    position: fixed; 
-    height: 100vh;
   }
 
   .sidebar-header {
@@ -76,11 +76,13 @@
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border-radius: 4px;
-  z-index: 1001;
+  z-index: 1002;
 
   @media (min-width: 768px) {
     display: none;
   }
 }
+
+

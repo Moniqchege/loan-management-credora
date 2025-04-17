@@ -31,9 +31,9 @@ export class AuthService {
     const userExists = users.some(u => u.email === email);
 
     if (!userExists) {
-      const newUser = { email, password, id: Date.now(), role: 'user' }; // Add new user
+      const newUser = { email, password, id: Date.now(), role: 'user' }; 
       users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users)); // Store updated user list
+      localStorage.setItem('users', JSON.stringify(users)); 
       return true;
     }
     return false;

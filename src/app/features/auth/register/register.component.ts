@@ -33,14 +33,14 @@ export class RegisterComponent {
       return;
     }
 
-    const adminEmail = 'admin1@gmail.com';
-    const adminPassword = 'PassworD';
+     const adminEmail = 'admin1@gmail.com';
+     const adminPassword = 'PassworD';
 
     
 
-    const userRole = (
-      this.signupObj.EmailId === adminEmail && 
-      this.signupObj.password === adminPassword) ? 'Admin' : 'User';
+     const userRole = (
+       this.signupObj.EmailId === adminEmail && 
+       this.signupObj.password === adminPassword) ? 'Admin' : 'User';
 
     const newUser = {
       firstName: this.signupObj.firstName,

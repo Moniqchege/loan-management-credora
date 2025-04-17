@@ -15,6 +15,7 @@ import { Repayment } from '../../core/models/repayment.model';
 export class LoansComponent implements OnInit {
   loans: Loan[] = [];
   selectedLoanId: number | null = null;
+  repaymentSchedule: Repayment[] = [];
 
   constructor(private loanService: LoanService) {}
 
@@ -48,9 +49,9 @@ export class LoansComponent implements OnInit {
     this.newLoan = {
       id: 0,
       customerName: '',
-      loanAmount: 0,
-      interestRate: 0,
-      termMonths: 0,
+      loanAmount: null,
+      interestRate: null,
+      termMonths: null,
       startDate: '',
       status: 'Pending'
     };
@@ -61,6 +62,16 @@ export class LoansComponent implements OnInit {
   }
 
   toggleSchedule(id: number): void {
-    this.selectedLoanId = this.selectedLoanId === id ? null : id;
+    if (this.selectedLoanId === id) {
+      this.selectedLoanId = null;
+      this.repaymentSchedule = [];
+    } else {
+      this.selectedLoanId = id;
+      const loan = this.loans.find(l => l.id === id);
+      if (loan) {
+        this.repaymentSchedule = this.loanService.calculateRepaymentSchedule(loan);
+      }
+    }
   }
+  
 }

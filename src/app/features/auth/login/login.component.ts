@@ -45,6 +45,7 @@ export class LoginComponent {
   }
 
   goToSignup(): void {
-    this.router.navigate(['/signup']);
+    console.log('Navigating to signup...');
+    this.router.navigate(['/register']);
   }
 }
