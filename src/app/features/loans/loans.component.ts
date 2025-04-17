@@ -22,15 +22,22 @@ export class LoansComponent implements OnInit {
   newLoan: Loan = {
     id: 0,
     customerName: '',
-    loanAmount: 0,
-    interestRate: 0,
-    termMonths: 0,
+    loanAmount: '',
+    interestRate: '',
+    termMonths: '',
     startDate: '',
     status: 'Pending'
   };
 
   ngOnInit(): void {
-    this.loans = this.loanService.getLoans();
+    const allLoans = this.loanService.getLoans();
+    const searchQuery = localStorage.getItem('searchQuery')?.toLowerCase() || '';
+  
+    this.loans = searchQuery
+      ? allLoans.filter((loan: any) =>
+          loan.customerName.toLowerCase().includes(searchQuery)
+        )
+      : allLoans;
   }
 
   addLoan(): void {
@@ -49,9 +56,9 @@ export class LoansComponent implements OnInit {
     this.newLoan = {
       id: 0,
       customerName: '',
-      loanAmount: null,
-      interestRate: null,
-      termMonths: null,
+      loanAmount: '',
+      interestRate: '',
+      termMonths: '',
       startDate: '',
       status: 'Pending'
     };

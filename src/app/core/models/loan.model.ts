@@ -1,9 +1,9 @@
 export interface Loan {
     id: number;
     customerName: string;
-    loanAmount: number | null;
-    interestRate: number | null;
-    termMonths: number | null; 
+    loanAmount: string;
+    interestRate: string;
+    termMonths: string; 
     startDate: string; 
     status: string;
   }

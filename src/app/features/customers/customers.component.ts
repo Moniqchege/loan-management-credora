@@ -12,13 +12,20 @@ import { CommonModule } from '@angular/common';
 })
 export class CustomersComponent implements OnInit {
   customers: Customer[] = [];
-  customer: Customer = { id: 0, name: '', email: '', phone: '' };
+  customer: Customer = { id: 0, identification: '', name: '', email: '', phone: '' };
   isEditing = false;
 
   ngOnInit() {
     const storedCustomers = localStorage.getItem('customers');
+    const searchQuery = localStorage.getItem('searchQuery')?.toLowerCase() || '';
+  
     if (storedCustomers) {
-      this.customers = JSON.parse(storedCustomers);
+      const allCustomers = JSON.parse(storedCustomers);
+      this.customers = searchQuery
+        ? allCustomers.filter((c: any) =>
+            c.name.toLowerCase().includes(searchQuery)
+          )
+        : allCustomers;
     }
   }
 
@@ -46,7 +53,7 @@ export class CustomersComponent implements OnInit {
   }
 
   resetForm() {
-    this.customer = { id: 0, name: '', email: '', phone: '' };
+    this.customer = { id: 0, identification: '', name: '', email: '', phone: '' };
     this.isEditing = false;
   }
 }

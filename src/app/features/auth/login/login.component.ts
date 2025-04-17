@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginObj = {
-    EmailId: '',
+  loginObj:Partial<User> = {
+    username: '',
+    email: '',
     password: ''
   };
 
@@ -22,30 +23,26 @@ export class LoginComponent {
     private userService: UserService
   ) {}
 
-  onLogin(): void {
-    const users = this.userService.getUsers();
+  onLogin():void{
+    const { username, email, password } = this.loginObj;
 
-    const matchedUser = users.find((user: User) =>
-      user.email === this.loginObj.EmailId &&
-      user.password === this.loginObj.password
-    );
+    if (!email || !password || !username) {
+      alert('Please fill in all fields');
+      return;
+    }
 
-    if (matchedUser) {
-      localStorage.setItem('currentUser', JSON.stringify(matchedUser));
-      alert(`Welcome ${matchedUser.role === 'admin' ? 'Admin' : 'User'}!`);
-      
-      if (matchedUser.role === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/dashboard']);
-      }
+    const user = this.userService.getUserByEmailAndPassword(email, password, username);
+
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      alert(`Welcome, ${username}`);
+      this.router.navigate(['/dashboard']);
     } else {
-      alert('Invalid email or password.');
+      alert('Invalid email or password')
     }
   }
 
   goToSignup(): void {
-    console.log('Navigating to signup...');
     this.router.navigate(['/register']);
   }
 }

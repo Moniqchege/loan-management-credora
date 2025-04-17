@@ -30,6 +30,12 @@ export class UserService {
 
   addUser(newUser: User): void {
     const users = this.getUsers();
+    const emailExists = users.some(user => user.email === newUser.email);
+
+    if (emailExists) {
+      throw new Error('Email already registered');
+    }
+
     newUser.id = this.generateNextUserId(users);
     users.push(newUser);
     localStorage.setItem(this.localStorageKey, JSON.stringify(users));
@@ -37,5 +43,10 @@ export class UserService {
 
   private generateNextUserId(users: User[]): number {
     return users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+  }
+
+  getUserByEmailAndPassword(email: string, password: string, username: string): User | undefined {
+    const users = this.getUsers();
+    return users.find(user => user.email === email && user.password === password && user.username);
   }
 }

@@ -3,18 +3,29 @@
     <div class="form-side">
       <div class="card-body p-md-5 mx-md-4 text-black">
         <div class="logo-header">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-               alt="logo" class="logo-img">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+            alt="logo"
+            class="logo-img"
+          />
           <h4>Credora</h4>
         </div>
-        
 
         <form>
           <div class="form-outline mb-4">
             <input
-              type="email"
-              name="EmailId"
-              [(ngModel)]="loginObj.EmailId"
+              type="text"
+              name="username"
+              [(ngModel)]="loginObj.username"
+              class="form-control"
+              placeholder="Enter Username"
+            />
+          </div>
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              name="email"
+              [(ngModel)]="loginObj.email"
               class="form-control"
               placeholder="Enter Email"
             />
@@ -31,11 +42,7 @@
           </div>
 
           <div class="text-center pt-1 mb-5 pb-1 stacked-buttons">
-            <button
-              class="btn login-button"
-              type="button"
-              (click)="onLogin()"
-            >
+            <button class="btn login-button" type="button" (click)="onLogin()">
               Log in
             </button>
             <a class="text-muted forgot-password" href="#!">Forgot password?</a>
@@ -43,7 +50,15 @@
 
           <div class="d-flex align-items-center justify-content-center pb-4">
             <p class="mb-0 me-2">Don't have an account?</p>
-            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger" (click)="goToSignup()">Register</button>
+            <button
+              type="button"
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-outline-danger"
+              (click)="goToSignup()"
+            >
+              Register
+            </button>
           </div>
         </form>
       </div>
@@ -53,7 +68,10 @@
       <div class="text-white px-3 py-4 p-md-5 mx-md-4">
         <h4 class="mb-4">At Credora, We're More Than Just a Loan App</h4>
         <p>
-          Credora Loan Management App empowers you to manage loans efficiently, track repayments seamlessly, and stay informed with real-time updates. We're your trusted partner in financial organization, helping you stay on top of every client and every transaction.
+          Credora Loan Management App empowers you to manage loans efficiently,
+          track repayments seamlessly, and stay informed with real-time updates.
+          We're your trusted partner in financial organization, helping you stay
+          on top of every client and every transaction.
         </p>
       </div>
     </div>

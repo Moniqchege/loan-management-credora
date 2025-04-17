@@ -14,9 +14,9 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  login(email: string, password: string): boolean {
+  login(email: string, password: string, username: string): boolean {
     const users = this.getUsers();
-    const user = users.find(u => u.email === email && u.password === password);
+    const user = users.find(u => u.email === email && u.password === password && u.username === username);
 
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
@@ -26,12 +26,17 @@ export class AuthService {
     return false;
   }
 
-  register(email: string, password: string): boolean {
+  register(email: string, password: string, username: string): boolean {
     const users = this.getUsers();
     const userExists = users.some(u => u.email === email);
 
     if (!userExists) {
-      const newUser = { email, password, id: Date.now(), role: 'user' }; 
+      const newUser = { 
+        id: Date.now(),
+        username,
+        email,
+        password
+       }; 
       users.push(newUser);
       localStorage.setItem('users', JSON.stringify(users)); 
       return true;
